@@ -27,7 +27,6 @@ A repo to contain notes code examples from the Vue.js Getting Started course on 
 * Simplify development; separation of concerns between UI and data/business logic
 * Remove the burden of managing the DOM
 * Updates occur automatically
-* 
 
 Template Example with Declaritive Bindings:
 
@@ -57,13 +56,13 @@ beers: [
 
 #### Speed
 
-* Starts and runs fast: 
-    * Small library size and Virtual DOM
-        * 27.3kb (gzipped) - 74.8kb        
+* Starts and runs fast:
+  * Small library size and Virtual DOM
+    * 27.3kb (gzipped) - 74.8kb
     * Virtual DOM
-        * Lightweight copy of actual DOM
-        * Allows for efficient determination of what needs to be updated
-        * Batches updates
+      * Lightweight copy of actual DOM
+      * Allows for efficient determination of what needs to be updated
+      * Batches updates
 
 #### Other Considerations
 
@@ -73,16 +72,16 @@ beers: [
 ##### Browser Support
 
 * Legacy Browsers - IE9+
-    * React doesn't support IE below 11
+  * React doesn't support IE below 11
 * Evergreen Browsers - Chrome, Edge, Firefox, and Safari
 * Mobile Browsers - Android, Safari on iOS
 
 #### Licensing
 
 * MIT Licensing
-    * Also used by jQuery and Angular
-    * ~~React uses 3-clause BSD license with Facebook Addendum~~
-    * As of September 2017, React now also uses MIT Licensing
+  * Also used by jQuery and Angular
+  * ~~React uses 3-clause BSD license with Facebook Addendum~~
+  * As of September 2017, React now also uses MIT Licensing
 
 #### Installing & Setting up Vue.js
 
@@ -92,12 +91,14 @@ beers: [
 Install Vue.js
 
 * Core library
-* Available via CDN 
+* Available via CDN
 * unpkg is recommended
 * Can use package manager to obtain Vue.js as well
 
 ```HTML
+
 https://unpkg.com/vue
+
 ```
 
 Install Axios
@@ -105,7 +106,9 @@ Install Axios
 * Library used for making Ajax calls
 
 ```HTML
+
 https://unpkg.com/axios/dist/axios.min.js
+
 ```
 
 Example Vue.js Application with references to Vue and Axios:
@@ -114,7 +117,7 @@ Example Vue.js Application with references to Vue and Axios:
 
 <html>
     <head>
-        <title>Growler</title>        
+        <title>Growler</title>
     </head>
     <body>
         <div id="growler">
@@ -145,6 +148,7 @@ var growler = new Vue ({
 Option 1: JavaScript:
 
 ```JavaScript
+
 ...
 el: document.getElementById('growler')
 ...
@@ -208,6 +212,91 @@ el: '#growler'
 1. destroyed hook fires
 
 ## Module 2:  Creating Vue.js Templates
+
+### Accessing Data Property
+
+In Vue.js, since the Data object defined in the Vue application is a POJO it can be accessed outside of the Vue Application.  Inside the Vue App, you can access the Data object in a short-handed way:
+
+```JavaScript
+growler.data.appName
+
+//shorthand:
+growler.appName
+```
+
+### Loading Data Properties
+
+#### Data Property Caveats
+
+* You can only modify properties
+* You can't add or remove properties at runtime
+* JavaScript objects are formatted differently
+  * In order to examine the data easily, use ```vue-devtools``` plugin for Chrome
+
+You can't do these things because the getters and setters are generated
+
+#### Concepts
+
+* Data serves as the "schema"
+
+#### Loading a Property
+
+Object.defineProperty is used to generate getters and setters during the Creation Stage
+
+* Getters and Setters generated
+* Enables Change Notifications
+* Enables Dependency Tracking (?)
+
+#### Enabling change notifications and dependency tracking is referred to as making the property "reative"
+
+*QUESTION:  Is this data-binding?*
+
+#### Naming Properties
+
+* Needs to follow JavaScript naming rules
+* Shouldn't start with $ or _
+
+#### Property Values
+
+* ```data``` property values should only be *data*
+* Primitive values
+* Do not use native objects; Number, String, Array, etc.
+
+#### Binding Content to a Template
+
+#### Binding Text - 2 Options
+
+1. Semantic syntax
+1. Declaritive syntax
+
+#### Semantic Bindings
+
+Double curly braces known as Mustaches!  {{...}}
+
+```HTML
+
+<h2>Welcome to {{ appName }}</h2>
+
+```
+
+#### Declaritive Bindings
+
+* Created via directives
+* All baked-in directives begin with "v-"
+
+v-text Directive:  Interpolates a property value as an HTML element's text
+
+Example of using the v-text Directive:
+
+```HTML
+
+<h2 v-text="appName"></h2>
+
+```
+
+NOTE:  If you need to bind to *only* part of an element, use Semantic Binding!
+
+
 
 ## Module 3:  Binding with Forms in Vue.js
 
