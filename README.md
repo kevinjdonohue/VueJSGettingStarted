@@ -284,7 +284,7 @@ Double curly braces known as Mustaches!  {{...}}
 * Created via directives
 * All baked-in directives begin with "v-"
 
-v-text Directive:  Interpolates a property value as an HTML element's text
+```v-text``` Directive:  Interpolates a property value as an HTML element's text
 
 Example of using the v-text Directive:
 
@@ -296,7 +296,44 @@ Example of using the v-text Directive:
 
 NOTE:  If you need to bind to *only* part of an element, use Semantic Binding!
 
+#### One-Time Bindings
 
+* ```v-once``` directive - renders the element once and only once
+  * this includes Children
+* Helps to optimize performance
+
+```HTML
+
+<h2 v-once>{{ appName }}</h2>
+
+```
+
+#### Binding to HTML (Elements)
+
+* ```v-html``` directive - updates the innerHTML property
+* Allows you to bind HTML (vs. text) to an element in your UI
+
+```JS
+
+var growler = new Vue({
+    el: '#growler',
+    data: {
+        appName: '<a href="/">Growler</a>'
+    }
+});
+
+```
+
+```HTML
+
+<h2 v-html="appName"></h2>
+
+```
+
+#### Binding to HTML Attributes
+
+* ```v-bind``` directive - binds data property values to HTML attributes
+* 
 
 ## Module 3:  Binding with Forms in Vue.js
 

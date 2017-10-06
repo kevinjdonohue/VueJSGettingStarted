@@ -6,7 +6,21 @@
 </head>
 
 <body>
-    <div id="growler">{{ appName }}</div>
+    <div id="growler">
+        <!--OneTime Binding and Declaritive Binding-->
+        <h1 v-once v-text="appName"></h1>
+        <!--HTML Attribute Binding-->
+        <!--Alternative:  :src="appLogo"-->
+        <img alt="Growler" v-bind:src="appLogo" style="height:50px;"/>
+        <!--Semantic Binding-->
+        <div>Version: {{ appVersion }}</div>
+        <div>Description: {{ appDescription }}</div>
+        <!--HTML Binding-->
+        <div>
+            <div>URL:</div>
+            <div v-html="appURL"></div>
+        </div>
+    </div>    
     <script type="text/javascript" src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
     <script type="text/javascript" src="growler.js"></script>
 </body>
