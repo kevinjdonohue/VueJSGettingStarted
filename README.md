@@ -344,7 +344,9 @@ There are a few different options when binding to CSS Classes:
 * Retrieve CSS Classes from an Array (similar)
 * Bind to specific CSS properties (interesting)
 
-```JS
+Retrieving CSS Classes from an Array:
+
+```HTML
 
 <h1 v-once v-text="appName" v-bind:class="[accentColor, headers]"></h1>
 
@@ -368,6 +370,72 @@ data () {
   margin: 0;
 }
 </style>
+
+```
+
+Binding to specific CSS Properties:
+
+```HTML
+
+<h1 v-once v-text="appName" v-bind:class="{
+      'headers': true,
+      'accent-color': isOnline
+    }"></h1>
+
+data () {
+    return {
+        ...
+        isOnline: true
+        ...   
+    }
+  }    
+
+<style scoped>
+.accent-color {
+  color:#FF6A00
+}
+
+.headers {
+  font-family: 'Verdana';
+  font-size: 3em;
+  margin: 0;
+}
+</style>    
+
+```
+
+#### Using JavaScript Expressions
+
+* A type of statement.
+* A line of code that produces a value
+* Expressions can be used with bindings
+* Can be used in a Template
+* Mustaches - {{}}
+* Evaluated within the context of a view
+* Executed within the Vue Sandbox - an isolated environment?
+    * "Whitelisted" globals are available for use in this environment
+    * See Whitelisted Globals slide from Vue.js Getting Started for reference
+
+Expression being used in a Template:
+```JS
+
+var growler = new Vue({
+    el: '#growler',
+    data: {
+        appName: 'Growler',
+        isOnline: false
+    }
+});
+
+```
+
+```HTML
+
+<h2
+    v-text="appName"
+    v-bind:style=
+    "{ color:isOnline? '#FF6A00':'#000' }">
+</h2>
 
 ```
 
