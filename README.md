@@ -333,7 +333,44 @@ var growler = new Vue({
 #### Binding to HTML Attributes
 
 * ```v-bind``` directive - binds data property values to HTML attributes
-* 
+
+#### Binding to CSS Classes
+
+Allows us to maintain separation between the design (styles) and the data.
+
+There are a few different options when binding to CSS Classes:
+
+* Retrieve CSS Classes from an Object
+* Retrieve CSS Classes from an Array (similar)
+* Bind to specific CSS properties (interesting)
+
+```JS
+
+<h1 v-once v-text="appName" v-bind:class="[accentColor, headers]"></h1>
+
+data () {
+    return {
+      ...      
+      accentColor: 'accent-color',
+      headers: 'headers',
+      ...
+    }
+  }
+
+<style scoped>
+.accent-color {
+  color:#FF6A00
+}
+
+.headers {
+  font-family: 'Verdana';
+  font-size: 3em;
+  margin: 0;
+}
+</style>
+
+```
+
 
 ## Module 3:  Binding with Forms in Vue.js
 
