@@ -439,8 +439,126 @@ var growler = new Vue({
 
 ```
 
-
 ## Module 3:  Binding with Forms in Vue.js
+
+v-model directive - This can be used with:
+* Text fields
+* Checkboxes
+* Radio buttons
+* Drop down lists
+
+### Binding to Text Fields
+
+* input
+    * Many textual input types, inlcuding HTML5 types are supported
+* textarea
+
+### Binding to Inputs
+
+Two-Way Binding Example with an Input:
+
+```JS
+
+data: {
+    appName: 'Growler',
+    query: ''
+}
+
+```
+NOTE:  You can not use the mustache syntax for model binding (v-model).
+```HTML
+
+<div id="growler">
+    <input
+    v-model="query"
+    placeholder="search...">
+    <div>Searching for: {{ query }}</div>
+</div>
+
+```
+
+### Binding to Checkboxes
+
+* Checkbox
+* Checkbox List
+
+Single Value:
+```JS
+
+data: {
+    appName: 'Growler',
+    isPowerSyntaxEnabled: false
+}
+
+```
+
+```HTML
+
+<input type="checkbox" v-model="isPowerSyntaxEnabled">
+
+```
+
+Multiple Values:
+
+```JS
+
+data: {
+    appName: 'Growler',
+    isPowerSyntaxEnabled: false,
+    searchIndexes: []
+}
+
+```
+
+```HTML
+<label>
+    <input
+    type="checkbox" value="beers"
+    v-model="searchIndexes">
+    Beers
+</label>
+<br/>
+
+<label>
+    <input
+    type="checkbox" value="breweries"
+    v-model="searchIndexes">
+    Breweries
+</label>
+<br/>
+
+<small>
+    selected: {{ searchIndexes }}
+</small>
+
+```
+
+### Binding to Radio Buttons
+
+Very similar to binding to multiple values (above).  Instead of an array, you bind to a single value from your model.  Toggling between the two radio buttons, toggles the value stored in the single value in the model.
+
+```JS
+
+data: {
+    searchIndex: "beers"
+}
+
+```
+
+```HTML
+
+<input type="radio" value="beers" v-model="searchIndex">
+<input type="radio" value="breweries" v-model="searchIndex">
+
+```
+
+#### Binding to Drop Downs
+
+Nearly identical to binding to checkboxes and radio buttons.
+
+### Modifying Bound Values
+
+
 
 ## Module 4:  Responding to User Events in Vue.js
 

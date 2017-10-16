@@ -11,6 +11,26 @@
     <h2>Version: {{ appVersion }}</h2>
     <h2>Description: {{ appDescription }}</h2>
     <div v-html="appUrl"></div>
+    <div style="height: 20px;"></div>
+    <label>
+      <input
+      type="checkbox" value="beers"
+      v-model="searchIndexes">
+      Beers
+    </label>
+    <br/>
+
+    <label>
+      <input
+      type="checkbox" value="breweries"
+      v-model="searchIndexes">
+      Breweries
+    </label>
+    <br/>
+
+    <small>
+      selected: {{ searchIndexes }}
+    </small>
   </div>
 </template>
 
@@ -25,7 +45,8 @@ export default {
       appUrl: '<a href="http://www.growler.com">Growler</a>',
       // accentColor: 'accent-color',
       // headers: 'headers',
-      isOnline: true
+      isOnline: true,
+      searchIndexes: []
     }
   }
 }
